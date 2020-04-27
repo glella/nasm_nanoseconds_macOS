@@ -52,7 +52,7 @@ _main:
     cvtsi2sd    xmm1, [diff]            ; load diff from mach_absolute time in [diff]
                                         ; if you do it before register gets cleared
     ; calc nanoseconds - xmm0 ends with nanoseconds
-    ; in my hardware ratio is 1.0 so mach_absolute_time = nanoseconds
+    ; in my hardware ratio is 1.0 so mach_absolute_time diff = nanoseconds
     mulsd       xmm0, xmm1              ; ratio * diff -> xmm0
     cvtsd2si    rax, xmm0               ; convert float to int
     mov         [result], rax           ; save to result
