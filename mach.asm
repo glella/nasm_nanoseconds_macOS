@@ -53,8 +53,8 @@ _main:
                                         ; if you do it before register gets cleared
     ; calc nanoseconds - xmm0 ends with nanoseconds
     ; in my hardware ratio is 1.0 so mach_absolute_time = nanoseconds
-    mulsd       xmm0, xmm1
-    cvtsd2si    rax, xmm0                
+    mulsd       xmm0, xmm1              ; ratio * diff -> xmm0
+    cvtsd2si    rax, xmm0               ; convert float to int
     mov         [result], rax           ; save to result
 
     ; print nanoseconds as int
